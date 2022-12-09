@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <input id="inp" type="file" onChange="showFile()" />
+    <input id="submit" type="submit" onClick="render()" />
+  </body>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/ipfs-core/dist/index.min.js"></script>
+
+  <!-- <script src="bundle.js"></script> -->
+  <script>
+    const showFile = async function () {
+      // e.preventDefault();
+      const ipfs = await window.IpfsCore.create();
+
+      const fileObj = document.getElementById("inp");
+      // console.dir(`my method : ${fileObj}`);
+      let file = fileObj.files[0];
+      // const txt = "hello siddhesh";
+      const { path } = await ipfs.add(file);
+      console.log(path);
+      sessionStorage.setItem("path", path);
+      // const buffer = await toBuffer(ipfs.cat(cid));
+      // const newtxt = buffer.toString();
+      // console.log(newtxt, "newnewnew");
+      // console.log(file);
+
+      ///
+      // const ipfs = await Ipfs.create();
+      // const results = await ipfs.add("hi my name is siddhesh");
+      // console.log(results);
+
+      // const buffer = ipfs.cat("QmYgbF77GTTDV8ux6c4ghrdFxkARzh3QLMmhjaLfFbH2iW");
+      // const result = await toBuffer(buffer);
+      // const final = result.toString();
+      // const decoder = new TextDecoder();
+      // let data = [];
+
+      // const hash = "QmYgbF77GTTDV8ux6c4ghrdFxkARzh3QLMmhjaLfFbH2iW";
+
+      // const img = document.createElement("img");
+      // // img.src = "https://gateway.ipfs.io/ipfs/"+hash;
+      // const body = document.querySelector("body");
+      // body.appendChild(img);
+      // img.src = "https://gateway.ipfs.io/ipfs/" + hash;
+      // for await (const chunk of buffer) {
+      //   data.push(chunk);
+      //   // chunks of data are returned as a Uint8Array, convert it back to a string
+      // }
+
+      // console.log(data);
+      // const cid = results[0].hash;
+      // console.log("CID created via ipfs.add:", cid);
+      // const data = await node.cat(cid);
+      // console.log("Data read back via ipfs.cat:", new TextDecoder().decode(data));
+    };
+
+    // const render = function (e) {
+    //   e.preventDefault();
+    //   const file = JSON.parse(sessionStorage.getItem("file"));
+    //   if (file) {
+    //   }
+    // };
+
+    // const showFile = async function () {
+    //   //   e.preventDefault();
+    //   // const fileObj = document.getElementById("inp");
+    //   //   console.dir(`my method : ${fileObj}`);
+    //   //   let file = fileObj.files[0];
+    //   // const txt = "hello siddhesh";
+    //   // const { cid } = await ipfs.add(txt);
+    //   // console.log(cid);
+    //   // const buffer = await toBuffer(ipfs.cat(cid));
+    //   // const newtxt = buffer.toString();
+    //   // console.log(newtxt, "newnewnew");
+    //   //   console.log(file);
+
+    //   ///
+    //   const ipfs = await window.IpfsCore.create();
+    //   // const ipfs = await Ipfs.create();
+    //   const results = await ipfs.add("hi my name is siddhesh");
+    //   console.log(results);
+    //   const buffer = await ipfs.cat(results.path);
+    //   const result = await toBuffer(buffer);
+    //   const final = result.toString();
+    //   console.log(final);
+    //   // const cid = results[0].hash;
+    //   // console.log("CID created via ipfs.add:", cid);
+    //   // const data = await node.cat(cid);
+    //   // console.log("Data read back via ipfs.cat:", new TextDecoder().decode(data));
+    // };
+
+    const render = function () {
+      // e.preventDefault();
+      // const file = JSON.parse(sessionStorage.getItem("file"));
+      const hash = sessionStorage.getItem("path");
+      console.log(hash);
+      const img = document.createElement("img");
+      const body = document.querySelector("body");
+      body.appendChild(img);
+      img.src = "https://gateway.ipfs.io/ipfs/" + hash;
+      // if (file) {
+      // }
+    };
+  </script>
+</html>

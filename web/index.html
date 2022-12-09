@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decentralised Image Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.28.0/dist/tsparticles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.5.0/custom-elements-es5-adapter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.5.0/webcomponents-loader.js"></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/web-particles@1.1.0/dist/web-particles.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="main relative">
+      <web-particles
+        id="tsparticles"
+        options='{"fps_limit":60,"interactivity":{"detectsOn":"canvas","events":{"onClick":{"enable":true,"mode":"push"},"onHover":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"push":{"particles_nb":4},"repulse":{"distance":200,"duration":0.4}}},"particles":{"color":{"value":"#6bcbd1"},"links":{"color":"#ffffff","distance":150,"enable":true,"opacity":0.8,"width":1},"move":{"bounce":false,"direction":"none","enable":true,"outMode":"out","random":false,"speed":2,"straight":false},"number":{"density":{"enable":true,"area":800},"value":80},"opacity":{"value":0.5},"shape":{"type":"circle"},"size":{"random":true,"value":5}},"detectRetina":true}'
+      >
+      </web-particles>
+      <div class="text z-0">
+        <h1
+          class="text-center pt-16 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-4xl dark:text-white text-up ml-4"
+        >
+          WEB3 Decentralised Storage Solutions
+        </h1>
+      </div>
+      <div class="flex items-center justify-center mt-96 space-x-8">
+        <input
+          type="file"
+          id="inp"
+          class="button-new bg-white"
+          value="Upload an Image"
+          onChange="showFile()"
+        />
+        <input
+          type="button"
+          class="button-new bg-white"
+          value="Submit Query"
+          onclick="render()"
+        />
+      </div>
+      <div class="img-container grid grid-cols-2 gap-4 ml-52 pb-24"></div>
+    </div>
+    <!-- <script src="index.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/ipfs-core/dist/index.min.js"></script>
+
+    <script>
+      const showFile = async function () {
+        // e.preventDefault();
+        const ipfs = await window.IpfsCore.create();
+
+        const fileObj = document.getElementById("inp");
+        // console.dir(`my method : ${fileObj}`);
+        let file = fileObj.files[0];
+        // const txt = "hello siddhesh";
+        const { path } = await ipfs.add(file);
+        console.log(path);
+        sessionStorage.setItem("path", path);
+      };
+
+      const render = function () {
+        // e.preventDefault();
+        // const file = JSON.parse(sessionStorage.getItem("file"));
+        const hash = sessionStorage.getItem("path");
+        console.log(hash);
+        const img = document.createElement("img");
+        const container = document.querySelector(".img-container");
+        container.appendChild(img);
+        img.src = "https://gateway.ipfs.io/ipfs/" + hash;
+        // if (file) {
+        // }
+      };
+    </script>
+  </body>
+</html>
