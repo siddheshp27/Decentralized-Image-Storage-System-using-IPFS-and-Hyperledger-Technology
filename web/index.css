@@ -10,7 +10,7 @@ canvas {
   position: fixed;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 1;
   top: 0px;
   left: 0px;
 }
@@ -18,6 +18,7 @@ canvas {
   z-index: -2;
 }
 .button-new {
+  z-index: 2;
   padding: 1.3em 3em;
   font-size: 12px;
   text-transform: uppercase;
@@ -49,4 +50,86 @@ canvas {
   justify-content: center;
   margin-top: 20rem;
   padding-bottom: 2rem;
+  z-index: 100;
+}
+@-webkit-keyframes waterfall {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-250%);
+    transform: translateY(-250%);
+  }
+  40%,
+  60% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(250%);
+    transform: translateY(250%);
+  }
+}
+@keyframes waterfall {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-250%);
+    transform: translateY(-250%);
+  }
+  40%,
+  60% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(250%);
+    transform: translateY(250%);
+  }
+}
+
+.waterfall div {
+  -webkit-animation: waterfall 1.5s infinite;
+  animation: waterfall 1.5s infinite;
+  background-color: white;
+  height: 20px;
+  left: 50%;
+  margin-top: -10px;
+  opacity: 0;
+  position: absolute;
+  top: 300px;
+  width: 20px;
+}
+.waterfall div:nth-of-type(1) {
+  -webkit-animation-delay: 0.25s;
+  animation-delay: 0.25s;
+  margin-left: -10px;
+}
+.waterfall div:nth-of-type(2) {
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  margin-left: 15px;
+}
+.waterfall div:nth-of-type(3) {
+  -webkit-animation-delay: 0.75s;
+  animation-delay: 0.75s;
+  margin-left: -35px;
+}
+.waterfall div:nth-of-type(4) {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  margin-left: 40px;
+}
+.waterfall div:nth-of-type(5) {
+  -webkit-animation-delay: 1.25s;
+  animation-delay: 1.25s;
+  margin-left: -60px;
+}
+.main {
+  z-index: 0;
+}
+
+#loader {
+  visibility: hidden;
 }

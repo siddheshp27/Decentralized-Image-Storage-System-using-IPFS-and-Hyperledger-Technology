@@ -44,11 +44,11 @@
     "Org1MSP": {
       "mspid": "Org1MSP",
       "adminPrivateKey": {
-        "path": "crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/de572a9751a67ac5f3de7441294e013e9a2313584b689dd61945917a7b07a495_sk"
+        "path": "/etc/data/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/priv_sk"
       },
       "peers": ["peer0.org1.example.com"],
       "signedCert": {
-        "path": "crypto-config/peerOrganizations/org1.example.com/msp/signcerts/cert.pem"
+        "path": "/etc/data/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem"
       }
     }
   },
@@ -57,11 +57,7 @@
       "tlsCACerts": {
         "path": "/etc/data/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
       },
-      "url": "grpcs://localhost:7051",
-      "eventUrl": "grpcs://localhost:7053",
-      "grpcOptions": {
-        "ssl-target-name-override": "peer0.org1.example.com"
-      }
+      "url": "grpcs://peer0.org1.example.com:7051"
     }
   }
 }

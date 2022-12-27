@@ -29,52 +29,43 @@
           WEB3 Decentralised Storage Solutions
         </h1>
       </div>
-      <div class="flex items-center justify-center mt-96 space-x-8">
+      <div class="waterfall" id="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="z-10 flex items-center justify-center mt-96 space-x-8">
         <input
           type="file"
           id="inp"
           class="button-new bg-white"
           value="Upload an Image"
-          onChange="showFile()"
+        />
         />
         <input
           type="button"
+          id="submit"
           class="button-new bg-white"
           value="Submit Query"
-          onclick="render()"
+        />
+        <input
+          type="button"
+          id="display"
+          class="button-new bg-white"
+          value="Display Query"
+        />
         />
       </div>
-      <div class="img-container grid grid-cols-2 gap-4 ml-52 pb-24"></div>
+      <div class="z-20">
+        <div class="img-container grid grid-cols-2 gap-4 ml-52 pb-24"></div>
+      </div>
     </div>
-    <!-- <script src="index.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/ipfs-core/dist/index.min.js"></script>
-
-    <script>
-      const showFile = async function () {
-        // e.preventDefault();
-        const ipfs = await window.IpfsCore.create();
-
-        const fileObj = document.getElementById("inp");
-        // console.dir(`my method : ${fileObj}`);
-        let file = fileObj.files[0];
-        // const txt = "hello siddhesh";
-        const { path } = await ipfs.add(file);
-        console.log(path);
-        sessionStorage.setItem("path", path);
-      };
-
-      const render = function () {
-        // e.preventDefault();
-        // const file = JSON.parse(sessionStorage.getItem("file"));
-        const hash = sessionStorage.getItem("path");
-        console.log(hash);
-        const img = document.createElement("img");
-        const container = document.querySelector(".img-container");
-        container.appendChild(img);
-        img.src = "https://gateway.ipfs.io/ipfs/" + hash;
-        // if (file) {
-        // }
-      };
-    </script>
+    <script src="https://unpkg.com/convertapi-js/lib/convertapi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script type="module" src="index.js"></script>
   </body>
 </html>
