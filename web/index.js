@@ -40,7 +40,7 @@ const render = async function (hash) {
   loader.style.visibility = "hidden";
 };
 
-//enroll hyperledger user
+//enroll hyperledger users
 function createUserHyperledger(username) {
   loader.style.visibility = "visible";
 
