@@ -1,10 +1,10 @@
 
 # Decentralized-Image-Storage-System-using-IPFS-and-Hyperledger-Technology
 
-Making use of the Hyperledger platform, we have developed a Private Blockchain. On a decentralised network, data and photos may be stored on this private blockchain.
+a web 3.0 application that is based on IPFS framework working with Hyperledger to produce and retrieve decentralised images.
 
 
-This Project was made using Javascript, Hyperledger.
+This Project was made using Javascript, Hyperledger, IPFS.
 ## Screenshots
 
 ![App Screenshot](https://i.ibb.co/1KLWvz0/Screenshot-273.png)
